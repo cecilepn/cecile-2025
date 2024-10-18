@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 [RequireComponent(typeof(CharacterController))]
 
 public class Test : MonoBehaviour
@@ -25,11 +27,14 @@ public class Test : MonoBehaviour
             Respawn();
         }
     }
-
+    public void OnRespawn(InputValue value)
+    {
+        Respawn();
+    }
     private void Respawn()
     {
-        enabled = false;
+        m_CharacterController.enabled = false;
         transform.position = m_Origin;
-        enabled = true;
+        m_CharacterController.enabled = true;
     }
 }
